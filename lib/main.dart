@@ -6,12 +6,19 @@ import 'package:profileapp/page/education.dart';
 import 'package:profileapp/page/profile.dart';
 import 'package:profileapp/page/skills.dart';
 import 'package:profileapp/page/story.dart';
+import 'package:profileapp/provider/favourite_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       statusBarBrightness: Brightness.dark));
-  runApp(const ProfileScreen());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => FavouriteItemProvider(),
+      child: const ProfileScreen(),
+    ),
+  );
 }
 
 class ProfileScreen extends StatefulWidget {
